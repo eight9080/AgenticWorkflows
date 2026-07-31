@@ -42,6 +42,10 @@ workItems.MapGet("/summary", (WorkItemService service) => Results.Ok(service.Get
     .WithName("GetWorkItemSummary");
 
 workItems.MapGet("/{id:guid}", (Guid id, WorkItemService service) =>
+        Results.Ok(service.Find(id)))
+    .WithName("GetWorkItem");
+
+workItems.MapGet("/{id:guid}", (Guid id, WorkItemService service) =>
     Results.Ok(service.Find(id)))
 .WithName("GetWorkItem");
 
